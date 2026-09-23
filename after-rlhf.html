@@ -88,6 +88,8 @@
       margin: 0 0 8px;
     }
     .split p { font-size: 16px; margin: 0; }
+    .triples { grid-template-columns: 1fr 1fr 1fr; }
+    .triples p { font-size: 15px; }
     ul { padding-left: 1.2em; }
     .watch {
       display: block;
@@ -159,11 +161,37 @@
     <li><b>RLVR</b> optimizes for verifiable correctness — error rates on tasks where the right answer can be checked. Useful, and still not the same as running a business process.</li>
     <li><b>Calibrated decisions</b> is the third target he says TypeSafe is aiming at: making a call with an honest sense of confidence, in a shape software can consume.</li>
   </ul>
+  <div class="split triples">
+    <article>
+      <h3>RLHF</h3>
+      <p>Optimize for what a human rater prefers. Great chat. Permanent reviewer.</p>
+    </article>
+    <article>
+      <h3>RLVR</h3>
+      <p>Optimize for answers you can check. Great when a test exists. Not a business process.</p>
+    </article>
+    <article>
+      <h3>RLCD / Jev</h3>
+      <p>Optimize for a typed decision plus honest confidence. Software acts or escalates.</p>
+    </article>
+  </div>
   <p>He is explicit that the next thing is not RLVR. A stack built for automation would look alien at first, including the API. Chat and token streams are the interface of assistance. Software that depends on a decision wants structure, confidence, and the right to abstain.</p>
   <p>He also restates the bitter lesson in a more operational order: algorithms can matter more than compute in games; in reality, data matters more than compute; and choosing the right task matters more than data. If you pick the wrong objective, more scale makes a more polished version of the same limitation.</p>
 
+  <h2>What TypeSafe is trying to build: Jev</h2>
+  <p>The talk ends before the product. Almeida says TypeSafe is still mostly stealth, that they are redesigning the stack for reliability and automation, and that they are not doing RLVR. The third objective is calibrated decision-making: take the intelligence already sitting in a pretrained model and make it usable inside software.</p>
+  <p>A few days before this note, they put a name on that bet. Jev is TypeSafe’s first “System One” model. The pitch is the opposite of a chatbot. It gives up string generation. You send it state and typed questions. It returns a structured answer plus probabilities and a confidence score. Their phrase is a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out.</p>
+  <p>The training method they contrast with RLHF and RLVR is RLCD — reinforcement learning for calibrated decisions. The interface is three question types software can actually branch on:</p>
+  <ul>
+    <li><b>Choice:</b> pick one option from a set you defined, with a probability on each option.</li>
+    <li><b>Score:</b> rate something against ordered levels, with a distribution over those levels.</li>
+    <li><b>Noul:</b> answer a yes/no as a probability, not a paragraph.</li>
+  </ul>
+  <p>That is how they try to close the assistance-versus-automation gap. The surrounding code sets the options, the thresholds, and the fallback. High confidence can act. Low confidence can escalate to a person. The model is not asked to write a helpful reply and hope someone is watching.</p>
+  <p>TypeSafe’s own evals claim Jev is much faster and cheaper than frontier chat models on these workflow-shaped tasks, and that schema matching is guaranteed because the output space is fixed in advance. Those numbers are theirs. The more durable idea does not depend on the multiples: if you want automation, stop asking a chat model to improvise text and start asking a decision model for a typed call your software can refuse.</p>
+
   <h2>What to do with this if you build or buy AI</h2>
-  <p>The talk is a founder’s argument, and TypeSafe later put a product behind it. You do not have to buy the company pitch to use the distinction.</p>
+  <p>The talk is a founder’s argument. You do not have to buy Jev to use the distinction.</p>
   <p>If a person will read the output, steer it, and own the last mile, today’s models are already a serious tool. Chat, drafting, coding with review, search through documents — that is the assistance era working as designed.</p>
   <p>If the system has to act while nobody is watching, ask a different question: what decision is being made, what happens when it is wrong, and how does the model show that it is unsure? A fluent paragraph is not evidence that those questions are settled. A green benchmark is not evidence either. The gap Almeida is pointing at is not “the model isn’t smart enough yet.” It is “we trained it for a different job.”</p>
   <p>That is the sane view he is arguing for. AI is neither a machine god nor an empty bubble. It is extremely good at the class of work we optimized it for, and still a poor substitute for software that has to decide without applause.</p>
