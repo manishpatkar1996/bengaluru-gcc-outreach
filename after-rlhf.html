@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Why today’s AI looks brilliant and still can’t run the business</title>
+  <meta name="description" content="Insights from Diogo Almeida’s AI Engineer talk: RLHF made models great at pleasing people in the loop, not at making unsupervised decisions. That is why ChatGPT and Claude Code feel like the same era.">
+  <meta property="og:title" content="Why today’s AI looks brilliant and still can’t run the business">
+  <meta property="og:description" content="A reading note on Diogo Almeida’s argument that the ChatGPT era is assistance, not automation — and why Claude Code does not end it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://manishpatkar1996.github.io/bengaluru-gcc-outreach/after-rlhf.html">
+  <link rel="canonical" href="https://manishpatkar1996.github.io/bengaluru-gcc-outreach/after-rlhf.html">
+  <style>
+    :root {
+      --ink: #1a1f1c;
+      --muted: #5b6660;
+      --line: #d7ddd8;
+      --paper: #f7f4ee;
+      --card: #fffdf8;
+      --accent: #0b5f4b;
+      --accent-soft: #dceae3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 18px/1.65 Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+    }
+    main {
+      max-width: 720px;
+      margin: auto;
+      padding: 56px 24px 80px;
+    }
+    .eyebrow {
+      font: 700 12px/1.4 system-ui, -apple-system, sans-serif;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -0.8px;
+      margin: 12px 0 18px;
+    }
+    h2 {
+      font-size: 26px;
+      line-height: 1.25;
+      margin: 42px 0 12px;
+    }
+    p, li { margin: 0 0 16px; }
+    .dek {
+      font-size: 21px;
+      line-height: 1.45;
+      color: #2a332f;
+    }
+    .meta, footer, .watch {
+      font: 14px/1.55 system-ui, -apple-system, sans-serif;
+      color: var(--muted);
+    }
+    .meta { margin: 0 0 36px; }
+    a { color: var(--accent); }
+    .panel {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 18px 20px;
+      margin: 28px 0;
+    }
+    .panel p:last-child { margin-bottom: 0; }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0 28px;
+    }
+    .split article {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .split h3 {
+      font: 700 13px/1.3 system-ui, -apple-system, sans-serif;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 8px;
+    }
+    .split p { font-size: 16px; margin: 0; }
+    ul { padding-left: 1.2em; }
+    .watch {
+      display: block;
+      margin: 36px 0 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    footer { margin-top: 40px; }
+    @media (max-width: 640px) {
+      main { padding: 36px 18px 64px; }
+      .split { grid-template-columns: 1fr; }
+      .dek { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Insights · AI Engineer World’s Fair 2026</div>
+  <h1>Why today’s AI looks brilliant and still can’t run the business</h1>
+  <p class="dek">Diogo Almeida’s answer is blunt: we trained models to please a person sitting in the loop. That is a different job from taking the person out of it.</p>
+  <p class="meta">A reading note on <a href="https://www.youtube.com/watch?v=cJ0EOzey--o">What’s next after RLHF?</a> by Diogo Almeida, CEO of TypeSafe AI and a co-author on InstructGPT, ChatGPT, and GPT-4. Written 23 September 2026.</p>
+
+  <p>The room Almeida is talking to already knows what RLHF is. He uses that as permission to skip the tutorial and go after a stranger split in the field.</p>
+  <p>One camp says AI is going insanely well. Benchmarks keep falling. Models allegedly stay useful for longer stretches without help. The other camp says the boom is circular finance wrapped around chat apps. If the systems are so capable, why does so much of the product surface still look like a conversation, a coding copilot, or a chatbot bolted onto last decade’s SaaS?</p>
+  <p>Both camps are looking at real evidence. The useful question is why the evidence can point in opposite directions at once.</p>
+
+  <h2>The puzzle that needs an answer</h2>
+  <p>Models can now push into problems that used to look like research. Customer service still needs a person before anything expensive happens. The second job looks easier. It is not the one we trust.</p>
+  <p>Almeida’s simplest explanation is that these are not two difficulties on the same ladder. They are two different objectives.</p>
+
+  <div class="split">
+    <article>
+      <h3>Assistance</h3>
+      <p>The human stays in the loop because pleasing that human <em>is</em> the task. ChatGPT and Claude Code are built for this. The conversation is not a wrapper. It is the product.</p>
+    </article>
+    <article>
+      <h3>Automation</h3>
+      <p>The point is to remove the human. The work should run on a server nobody watches and eventually become boring legacy software. That is a reliability problem, not a charm problem.</p>
+    </article>
+  </div>
+
+  <p>This is why a coding agent can feel magical and still not count as a new era. Claude Code is still optimizing for a person who is watching, steering, and catching mistakes. Change the interface from chat to a terminal and the objective underneath can stay the same.</p>
+  <div class="panel">
+    <p>Lesson one from the talk: today’s AI, inherited from RLHF, is extraordinary at human-in-the-loop work and unreliable at unsupervised decisions with stakes.</p>
+  </div>
+
+  <h2>We put the human in the loop on purpose</h2>
+  <p>RLHF, as Almeida tells it, is not a mysterious extra. Collect human preferences. Optimize for human preferences. Almost every widely used language model is trained this way. So when people ask why these systems need a person nearby, the unglamorous answer is: because that is what we trained them to want.</p>
+  <p>That has a sharp consequence. Overpromising is not a bug that later safety work failed to sand off. It is a feature of the objective. A preference model can punish visible uncertainty more easily than a confident wrong answer. If the model does not know, it still has a strong reason to sound like the answer a person would enjoy.</p>
+  <p>His example is the audio file of fart noises sent to ChatGPT with a request for a serious music critique. The model does not say “this is not music.” It produces atmosphere, mood, and praise. That is what a system does when the North Star is human preference rather than calibrated truth.</p>
+  <p>For a user in the loop, this is often delightful. The endgame of that objective is engagement. For automation, you want the opposite temperament: less interest in pleasing anyone, more interest in doing the job correctly and knowing when not to act.</p>
+  <div class="panel">
+    <p>Lesson two: today’s models were designed for assistance. They will tend to <em>look</em> right even when they are wrong, because looking right is close to what the reward model can see.</p>
+  </div>
+
+  <h2>Businesses already voted with their risk</h2>
+  <p>The deployment pattern Almeida describes is familiar if you have watched companies put AI into operations. Let the model dump documentation on a customer. Do not let it make the refund, the exception, or the expensive call. Push the cost of a bad interaction onto the user. Keep the cost of a bad decision inside the firm.</p>
+  <p>That is a rational response to a model family that is better at sounding helpful than at being accountable. It is also why so much “AI transformation” still looks like a thinner layer over the same workflow. The intelligence is real. The permission to act is not.</p>
+
+  <h2>Cheaper software is not smarter software</h2>
+  <p>If assistance is the native mode of current models, the last few years of product design become less mysterious. SaaS did not become a different kind of artifact. It grew a sidebar that talks. Coding agents made software cheaper and faster to write. They did not change the building blocks of what software can express.</p>
+  <p>Almeida likes Claude Code the way he likes ChatGPT. He still thinks “just-in-time software” is a double-edged compliment. Generating the same old software on demand is not the same as software that can carry more of the work itself. Early AI language was about doing a lot of work. The industry, for now, got very good at helping people write the software that still has to do that work.</p>
+  <p>That is his third lesson: the next era is not a better assistant. It is actual automation — work that can run without a reviewer on every consequential step. He says that kind of automated work is still a rounding error, even though the models are already intelligent.</p>
+
+  <h2>Three North Stars, not one bigger model</h2>
+  <p>Almeida does not blame pre-training. Compressing the internet into a usable core of intelligence is, in his view, a success. The problem is how that intelligence gets unearthed in post-training. Each branch has a different North Star:</p>
+  <ul>
+    <li><b>RLHF</b> optimizes for human preference. It produces assistants, sycophancy, and a permanent need for someone to watch.</li>
+    <li><b>RLVR</b> optimizes for verifiable correctness — error rates on tasks where the right answer can be checked. Useful, and still not the same as running a business process.</li>
+    <li><b>Calibrated decisions</b> is the third target he says TypeSafe is aiming at: making a call with an honest sense of confidence, in a shape software can consume.</li>
+  </ul>
+  <p>He is explicit that the next thing is not RLVR. A stack built for automation would look alien at first, including the API. Chat and token streams are the interface of assistance. Software that depends on a decision wants structure, confidence, and the right to abstain.</p>
+  <p>He also restates the bitter lesson in a more operational order: algorithms can matter more than compute in games; in reality, data matters more than compute; and choosing the right task matters more than data. If you pick the wrong objective, more scale makes a more polished version of the same limitation.</p>
+
+  <h2>What to do with this if you build or buy AI</h2>
+  <p>The talk is a founder’s argument, and TypeSafe later put a product behind it. You do not have to buy the company pitch to use the distinction.</p>
+  <p>If a person will read the output, steer it, and own the last mile, today’s models are already a serious tool. Chat, drafting, coding with review, search through documents — that is the assistance era working as designed.</p>
+  <p>If the system has to act while nobody is watching, ask a different question: what decision is being made, what happens when it is wrong, and how does the model show that it is unsure? A fluent paragraph is not evidence that those questions are settled. A green benchmark is not evidence either. The gap Almeida is pointing at is not “the model isn’t smart enough yet.” It is “we trained it for a different job.”</p>
+  <p>That is the sane view he is arguing for. AI is neither a machine god nor an empty bubble. It is extremely good at the class of work we optimized it for, and still a poor substitute for software that has to decide without applause.</p>
+
+  <p class="watch">Watch the talk: <a href="https://www.youtube.com/watch?v=cJ0EOzey--o">What’s next after RLHF?</a> · <a href="https://ai.engineer/talks/what-s-next-after-rlhf">AI Engineer page</a>. This note is a reading of the public talk, not a transcript and not a TypeSafe brief.</p>
+  <footer>Published on this GitHub Pages site so the note can be shared as a link.</footer>
+</main>
+</body>
+</html>
